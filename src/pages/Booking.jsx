@@ -22,14 +22,39 @@ export default function Booking() {
     alert("Reservation request submitted! (Static only)");
   }
 
+  
+
+  
+
   return (
     <>
-      <Navbar />
-
       {/* ================= BOOKING PAGE ================= */}
-      <section className="min-h-screen grid md:grid-cols-2 bg-[#FFF8F1] pt-28 pb-24">
+      <section className="min-h-screen grid md:grid-cols-2 bg-[#FFF8F1] pt-28 pb-24 overflow-x-hidden">
 
-        {/* ================= LEFT IMAGE PANEL ================= */}
+        {/* ================= IMAGE PANEL ================= */}
+        {/* Mobile image first */}
+        <div className="relative md:hidden flex items-center justify-center mb-8">
+          <div
+            className="w-full h-64 sm:h-80 bg-cover bg-center rounded-3xl shadow-xl"
+            style={{
+              backgroundImage: `linear-gradient(
+                rgba(92,26,18,0.85),
+                rgba(92,26,18,0.85)
+              ), url(${Hotel1})`,
+            }}
+          >
+            <div className="flex flex-col items-center justify-center h-full text-center text-white px-6">
+              <h1 className="text-3xl sm:text-4xl font-serif font-bold mb-2">
+                Durga खानावळ
+              </h1>
+              <p className="text-sm sm:text-base text-[#FFDAB3] tracking-wide">
+                स्थापना १९३४ • ९०+ वर्षांचा वारसा
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Left image panel for desktop */}
         <div
           className="relative hidden md:flex items-center justify-center bg-cover bg-center"
           style={{
@@ -50,18 +75,16 @@ export default function Booking() {
         </div>
 
         {/* ================= RIGHT FORM PANEL ================= */}
-        <div className="flex items-center justify-center px-6 py-16">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10">
-
-            <h2 className="text-3xl font-bold text-[#8B2E1F] mb-2 text-center">
+        <div className="flex items-center justify-center px-4 sm:px-6 md:px-10 py-12 sm:py-16">
+          <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10">
+            <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold text-[#8B2E1F] mb-2 text-center">
               Reserve a Table
             </h2>
-            <p className="text-center text-gray-500 mb-8">
+            <p className="text-center text-gray-500 mb-8 text-sm sm:text-base">
               Book your traditional dining experience
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               <div>
                 <label className="block text-sm font-medium mb-1">Name</label>
                 <input
@@ -88,7 +111,7 @@ export default function Booking() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Date</label>
                   <input
@@ -159,8 +182,6 @@ export default function Booking() {
         </div>
 
       </section>
-
-      
     </>
   );
 }

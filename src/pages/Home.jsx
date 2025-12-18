@@ -27,8 +27,10 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  
+
   return (
-    <div className="home-page">
+    <div className="home-page overflow-x-hidden">
       {/* ================= HERO SECTION ================= */}
       <section className="relative w-full h-screen overflow-hidden font-sans">
         {heroImages.map((image, index) => (
@@ -118,7 +120,6 @@ export default function Home() {
       </section>
 
       {/* ================= STORY SECTION ================= */}
-
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
           {/* LEFT: Text with Full Vertical Line */}
@@ -128,7 +129,6 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Vertical Line */}
             <span className="absolute left-0 top-0 h-full w-1 bg-[#C1440E] rounded-full"></span>
 
             <h2 className="text-4xl font-serif text-[#C1440E] mb-6">
@@ -160,10 +160,7 @@ export default function Home() {
             </p>
 
             <Link to="/about">
-              <button
-                className="bg-[#C1440E] text-white px-7 py-3 rounded-lg font-[Poppins] font-semibold
-               hover:bg-[#D65B39] transition duration-300 shadow-md"
-              >
+              <button className="bg-[#C1440E] text-white px-7 py-3 rounded-lg font-[Poppins] font-semibold hover:bg-[#D65B39] transition duration-300 shadow-md">
                 अधिक माहिती
               </button>
             </Link>
@@ -171,24 +168,23 @@ export default function Home() {
 
           {/* RIGHT: Image Section */}
           <motion.div
-            className="md:w-1/2 relative"
+            className="md:w-1/2 relative flex justify-center"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative w-full h-[420px] flex justify-center items-center">
-              <img
-                src={Hero}
-                alt="Durga Thali"
-                className="absolute left-0 top-6 w-[95%] rounded-2xl shadow-lg z-10"
-              />
-            </div>
+            <img
+              src={Hero}
+              alt="Durga Thali"
+              className="relative w-full max-w-full md:max-w-md rounded-2xl shadow-lg object-cover"
+            />
           </motion.div>
         </div>
       </section>
+
+      {/* ================= SPECIAL THALI ================= */}
       <section className="bg-[#FFF8F1] py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          {/* Section Title */}
           <h2 className="text-4xl md:text-5xl font-serif text-[#8B2E1F] mb-3">
             आमची खासियत
           </h2>
@@ -196,11 +192,9 @@ export default function Home() {
             स्पेशल महाराष्ट्रीयन थाळी
           </h3>
 
-          {/* Content */}
           <div className="flex flex-col md:flex-row items-center gap-12">
-            {/* Image */}
             <div className="md:w-1/2 relative">
-              <div className="absolute -top-6 -left-6 w-full h-full border-2 border-[#C1440E] rounded-3xl"></div>
+              <div className="absolute -top-6 -left-6 w-full h-full border-2 border-[#C1440E] rounded-3xl hidden md:block"></div>
               <img
                 src={DurgaThali}
                 alt="Special Maharashtrian Thali"
@@ -208,7 +202,6 @@ export default function Home() {
               />
             </div>
 
-            {/* Text */}
             <div className="md:w-1/2 text-left">
               <p className="text-lg md:text-xl text-[#3B2F2F] leading-relaxed mb-6 font-[Poppins]">
                 घरगुती पद्धतीची अस्सल चव, ताजे आणि दर्जेदार साहित्य, तसेच
@@ -225,12 +218,9 @@ export default function Home() {
                 कोशिंबीर, लोणचे आणि गावरान मसाल्यांची खास चव असते.
               </p>
 
-              {/* CTA */}
               <a
                 href="/menu"
-                className="inline-block bg-[#C1440E] text-white px-8 py-3 rounded-full
-                     font-semibold font-[Poppins] shadow-md
-                     hover:bg-[#D65B39] transition duration-300"
+                className="inline-block bg-[#C1440E] text-white px-8 py-3 rounded-full font-semibold font-[Poppins] shadow-md hover:bg-[#D65B39] transition duration-300"
               >
                 मेनू पहा →
               </a>
@@ -239,69 +229,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <section
-          className="relative bg-fixed bg-center bg-cover py-28"
-          style={{
-            backgroundImage: `url(${khanavalthali})`,
-          }}
-        >
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/75"></div>
+      {/* ================= OPENING TIME ================= */}
+      <section
+        className="relative bg-fixed bg-center bg-cover py-28"
+        style={{ backgroundImage: `url(${khanavalthali})` }}
+      >
+        <div className="absolute inset-0 bg-black/75"></div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
-            {/* Title */}
-            <h2 className="text-4xl md:text-5xl mb-6 text-[#F6C84C] font-[Playfair_Display] tracking-wide">
-              उघडण्याची वेळ
-            </h2>
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
+          <h2 className="text-4xl md:text-5xl mb-6 text-[#F6C84C] font-[Playfair_Display] tracking-wide">
+            उघडण्याची वेळ
+          </h2>
 
-            <p className="text-lg md:text-xl mb-12 text-white/90 font-[Poppins]">
-              साताऱ्यातील अस्सल महाराष्ट्रीयन थाळीसाठी आम्ही दररोज खुले आहोत
-            </p>
+          <p className="text-lg md:text-xl mb-12 text-white/90 font-[Poppins]">
+            साताऱ्यातील अस्सल महाराष्ट्रीयन थाळीसाठी आम्ही दररोज खुले आहोत
+          </p>
 
-            {/* Time Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                <h3 className="text-xl mb-3 text-[#F6C84C] font-[Playfair_Display]">
-                  दुपारची वेळ
-                </h3>
-                <p className="text-lg font-[Poppins] tracking-wide">
-                  ११:३० AM – ४:३० PM
-                </p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                <h3 className="text-xl mb-3 text-[#F6C84C] font-[Playfair_Display]">
-                  रात्रीची वेळ
-                </h3>
-                <p className="text-lg font-[Poppins] tracking-wide">
-                  ७:३० PM – १०:०० PM
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+              <h3 className="text-xl mb-3 text-[#F6C84C] font-[Playfair_Display]">
+                दुपारची वेळ
+              </h3>
+              <p className="text-lg font-[Poppins] tracking-wide">
+                ११:३० AM – ४:३० PM
+              </p>
             </div>
 
-            {/* Note */}
-            <p className="mt-12 text-sm text-white/80 font-[Poppins]">
-              गर्दीच्या वेळेत किंवा सुटीच्या दिवशी कृपया आधी संपर्क साधावा
-            </p>
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+              <h3 className="text-xl mb-3 text-[#F6C84C] font-[Playfair_Display]">
+                रात्रीची वेळ
+              </h3>
+              <p className="text-lg font-[Poppins] tracking-wide">
+                ७:३० PM – १०:०० PM
+              </p>
+            </div>
           </div>
-        </section>
+
+          <p className="mt-12 text-sm text-white/80 font-[Poppins]">
+            गर्दीच्या वेळेत किंवा सुटीच्या दिवशी कृपया आधी संपर्क साधावा
+          </p>
+        </div>
       </section>
+
+      {/* ================= REGAL INDULGENCE ================= */}
       <section className="relative bg-[#F6ECDC] py-24 overflow-hidden">
-        {/* Decorative Art */}
         <img
           src={design}
-          className="absolute top-10 left-10 w-40 opacity-30 hidden lg:block"
+          className="absolute top-10 left-10 w-40 opacity-30 hidden md:block"
           alt=""
         />
         <img
           src={design1}
-          className="absolute top-24 right-12 w-40 opacity-30 hidden lg:block"
+          className="absolute top-24 right-12 w-40 opacity-30 hidden md:block"
           alt=""
         />
 
-        {/* Main Content */}
         <div className="relative bg-white max-w-6xl mx-auto px-6 py-20 text-center shadow-xl rounded-3xl">
           <p className="tracking-[0.3em] text-sm text-[#B08968] mb-4 font-semibold">
             REGAL INDULGENCE
@@ -329,17 +311,14 @@ export default function Home() {
             </p>
           </div>
         </div>
-
-        {/* Image Showcase */}
       </section>
 
+      {/* ================= WHY CHOOSE US ================= */}
       <section className="relative bg-white py-24 overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute -top-24 -left-24 w-72 h-72 bg-yellow-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-orange-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute -top-24 -left-24 w-72 h-72 bg-yellow-200/30 rounded-full blur-3xl hidden md:block"></div>
+        <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-orange-200/30 rounded-full blur-3xl hidden md:block"></div>
 
         <div className="relative max-w-6xl mx-auto px-6">
-          {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -350,7 +329,6 @@ export default function Home() {
             Why Choose <span className="text-[#A33A2A]">Durga Khanaval?</span>
           </motion.h2>
 
-          {/* Cards */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -370,11 +348,9 @@ export default function Home() {
               className="group bg-[#FFF3E8] rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-transparent opacity-0 group-hover:opacity-60 transition duration-300 rounded-3xl"></div>
-
               <div className="w-14 h-14 flex items-center justify-center rounded-full bg-yellow-400 text-black mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <UtensilsCrossed />
               </div>
-
               <h3 className="text-xl font-semibold mb-3 text-[#8B2E1F]">
                 Authentic Taste
               </h3>
@@ -393,11 +369,9 @@ export default function Home() {
               className="group bg-[#E6F7EF] rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-transparent opacity-0 group-hover:opacity-60 transition duration-300 rounded-3xl"></div>
-
               <div className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 text-white mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Leaf />
               </div>
-
               <h3 className="text-xl font-semibold mb-3 text-[#8B2E1F]">
                 Fresh & Hygienic
               </h3>
@@ -415,11 +389,9 @@ export default function Home() {
               className="group bg-[#FFF1E6] rounded-3xl p-10 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent opacity-0 group-hover:opacity-60 transition duration-300 rounded-3xl"></div>
-
               <div className="w-14 h-14 flex items-center justify-center rounded-full bg-orange-500 text-white mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <IndianRupee />
               </div>
-
               <h3 className="text-xl font-semibold mb-3 text-[#8B2E1F]">
                 Value for Money
               </h3>
@@ -434,3 +406,5 @@ export default function Home() {
     </div>
   );
 }
+
+

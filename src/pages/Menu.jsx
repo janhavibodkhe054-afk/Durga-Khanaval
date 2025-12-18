@@ -37,10 +37,10 @@ export default function Menu() {
     }
   };
 
-  return (
-    <div className="menu-page bg-[#FFF8F1]">
-      <Navbar />
+  
 
+  return (
+    <div className="menu-page bg-[#FFF8F1] overflow-x-hidden">
       {/* ================= HERO SECTION ================= */}
       <section
         className="relative min-h-[75vh] flex items-center justify-center text-white bg-cover bg-center overflow-hidden"
@@ -55,21 +55,21 @@ export default function Menu() {
         <motion.div
           animate={{ y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-24 -left-24 w-96 h-96 bg-[#FFDAB3]/20 rounded-full blur-3xl"
+          className="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#FFDAB3]/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ y: [0, -40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#FFDAB3]/20 rounded-full blur-3xl"
+          className="absolute -bottom-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#FFDAB3]/20 rounded-full blur-3xl"
         />
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6">
+        <div className="relative z-10 text-center px-4 sm:px-6">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
-            className="text-sm md:text-lg tracking-widest uppercase text-[#FFDAB3] mb-4"
+            className="text-xs sm:text-sm md:text-lg tracking-widest uppercase text-[#FFDAB3] mb-4"
           >
             ९१ वर्षांची परंपरा
           </motion.p>
@@ -78,10 +78,10 @@ export default function Menu() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-4xl md:text-6xl xl:text-7xl font-serif font-bold leading-tight max-w-5xl mx-auto"
+            className="text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-serif font-bold leading-tight max-w-4xl sm:max-w-5xl mx-auto"
           >
             <span className="block text-white">Durga खानावळ</span>
-            <span className="block text-[#FFDAB3] mt-6 md:mt-8">
+            <span className="block text-[#FFDAB3] mt-4 sm:mt-6 md:mt-8">
               आमचे खास मेनू
             </span>
           </motion.h1>
@@ -90,14 +90,14 @@ export default function Menu() {
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "6rem", opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="h-1 bg-[#FFDAB3] rounded-full mx-auto mt-8"
+            className="h-1 bg-[#FFDAB3] rounded-full mx-auto mt-6 sm:mt-8"
           />
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="mt-6 text-base md:text-lg text-[#FFE9D4]"
+            className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#FFE9D4]"
           >
             पारंपरिक • शुद्ध • घरगुती स्वाद
           </motion.p>
@@ -105,22 +105,24 @@ export default function Menu() {
       </section>
 
       {/* ================= MENU CONTENT ================= */}
-      <section className="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-6xl mx-auto py-16 sm:py-20 px-4 sm:px-6 md:px-0 grid md:grid-cols-2 gap-10 sm:gap-12 items-center">
         {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="space-y-10"
+          className="space-y-8 sm:space-y-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#8B2E1F]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#8B2E1F]">
             ⭐ आमची खासियत — पारंपरिक महाराष्ट्रीयन थाळी
           </h2>
 
-          <div className="bg-[#FFF3E8] p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
-            <h3 className="text-2xl font-semibold mb-3">१. महाराष्ट्रीयन थाळी</h3>
-            <ul className="list-disc list-inside text-[#555] space-y-1">
+          <div className="bg-[#FFF3E8] p-4 sm:p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-3">
+              १. महाराष्ट्रीयन थाळी
+            </h3>
+            <ul className="list-disc list-inside text-[#555] space-y-1 sm:space-y-2 text-sm sm:text-base">
               <li>पोळी</li>
               <li>भात</li>
               <li>३ कोरड्या भाज्या</li>
@@ -131,11 +133,11 @@ export default function Menu() {
             </ul>
           </div>
 
-          <div className="bg-[#FFF3E8] p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
-            <h3 className="text-2xl font-semibold mb-3">
+          <div className="bg-[#FFF3E8] p-4 sm:p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-3">
               २. खास ‘द्रौपदी थाळी’
             </h3>
-            <ul className="list-disc list-inside text-[#555] space-y-1">
+            <ul className="list-disc list-inside text-[#555] space-y-1 sm:space-y-2 text-sm sm:text-base">
               <li>५–७ विविध पदार्थ</li>
               <li>अत्यंत लोकप्रिय</li>
               <li>फक्त शाकाहारी</li>
@@ -149,9 +151,9 @@ export default function Menu() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="flex justify-center"
+          className="flex justify-center mt-10 md:mt-0"
         >
-          <div className="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl hover:scale-105 transition">
+          <div className="relative w-full max-w-md sm:max-w-lg md:max-w-full rounded-3xl overflow-hidden shadow-2xl hover:scale-105 transition">
             <motion.img
               key={currentIndex}
               src={thaliImages[currentIndex]}
@@ -171,20 +173,19 @@ export default function Menu() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-3xl mx-auto text-center py-16 space-y-6 px-6"
+        className="max-w-3xl mx-auto text-center py-16 sm:py-20 space-y-4 sm:space-y-6 px-4 sm:px-6"
       >
-        <p className="text-xl md:text-2xl text-[#8B2E1F] font-medium">
+        <p className="text-lg sm:text-xl md:text-2xl text-[#8B2E1F] font-medium">
           आम्ही १९३४ पासून पारंपरिक, घरगुती आणि प्रेमाने बनवलेले जेवण देत आहोत.
         </p>
-        <p className="text-xl md:text-2xl text-[#8B2E1F] font-medium">
+        <p className="text-lg sm:text-xl md:text-2xl text-[#8B2E1F] font-medium">
           दररोज ताजे आणि शुद्ध ‘घरगुती जेवण’.
         </p>
-        <h3 className="text-3xl md:text-4xl font-bold text-[#A33A2A] animate-pulse">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A33A2A] animate-pulse">
           आपण नक्की भेट द्या — आपले हार्दिक स्वागत आहे!
         </h3>
       </motion.section>
-
-      
     </div>
   );
+
 }
