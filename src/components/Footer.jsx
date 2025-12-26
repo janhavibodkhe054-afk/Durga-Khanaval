@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/logo.jpeg"; // hotel logo
+import { LanguageContext } from "../context/LanguageContext";
 
 export default function Footer() {
+  const { language } = useContext(LanguageContext);
+
   return (
     <footer className="bg-black text-gray-300">
       {/* Main Content */}
@@ -10,32 +13,48 @@ export default function Footer() {
         {/* LOGO + NAME */}
         <div className="flex flex-col items-start md:items-start">
           <img src={logo} alt="Durga Khanawal Logo" className="w-24 h-24 rounded-full mb-4 shadow-lg" />
-          <h3 className="text-2xl font-bold text-white mb-1">Durga Khanawal</h3>
-          <p className="text-gray-400">Pure Veg • Since 1934</p>
+          <h3 className="text-2xl font-bold text-white mb-1">
+            {language === "en" ? "Durga Khanawal" : language === "mr" ? "दुर्गा खानावळ" : "दुर्गा खानावल"}
+          </h3>
+          <p className="text-gray-400">
+            {language === "en" ? "Pure Veg • Since 1934" : language === "mr" ? "प्युअर व्हेज • 1934 पासून" : "शुद्ध शाकाहारी • 1934 से"}
+          </p>
         </div>
 
         {/* QUICK LINKS */}
         <div>
-          <h4 className="text-xl font-semibold text-white mb-4">Quick Links</h4>
+          <h4 className="text-xl font-semibold text-white mb-4">
+            {language === "en" ? "Quick Links" : language === "mr" ? "जलद दुवे" : "त्वरित लिंक"}
+          </h4>
           <ul className="space-y-2">
             <li>
-              <a href="/" className="hover:text-yellow-400 transition-colors">Home</a>
+              <a href="/" className="hover:text-yellow-400 transition-colors">
+                {language === "en" ? "Home" : language === "mr" ? "मुख्यपृष्ठ" : "मुखपृष्ठ"}
+              </a>
             </li>
             <li>
-              <a href="/menu" className="hover:text-yellow-400 transition-colors">Menu</a>
+              <a href="/menu" className="hover:text-yellow-400 transition-colors">
+                {language === "en" ? "Menu" : language === "mr" ? "मेनू" : "मेनू"}
+              </a>
             </li>
             <li>
-              <a href="/about" className="hover:text-yellow-400 transition-colors">About Us</a>
+              <a href="/about" className="hover:text-yellow-400 transition-colors">
+                {language === "en" ? "About Us" : language === "mr" ? "आमच्याबद्दल" : "हमारे बारे में"}
+              </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-yellow-400 transition-colors">Contact</a>
+              <a href="/contact" className="hover:text-yellow-400 transition-colors">
+                {language === "en" ? "Contact" : language === "mr" ? "संपर्क" : "संपर्क"}
+              </a>
             </li>
           </ul>
         </div>
 
         {/* ADDRESS */}
         <div>
-          <h4 className="text-xl font-semibold text-white mb-4">Address</h4>
+          <h4 className="text-xl font-semibold text-white mb-4">
+            {language === "en" ? "Address" : language === "mr" ? "पत्ता" : "पता"}
+          </h4>
           <a
             href="https://maps.app.goo.gl/ZFd4bxnUrzT35Xc89"
             target="_blank"
@@ -49,9 +68,11 @@ export default function Footer() {
 
         {/* CONTACT + SOCIAL */}
         <div>
-          <h4 className="text-xl font-semibold text-white mb-4">Contact</h4>
+          <h4 className="text-xl font-semibold text-white mb-4">
+            {language === "en" ? "Contact" : language === "mr" ? "संपर्क" : "संपर्क"}
+          </h4>
           <p className="mb-4">
-            <strong>Phone:</strong>{" "}
+            <strong>{language === "en" ? "Phone:" : language === "mr" ? "फोन:" : "फ़ोन:"} </strong>
             <a href="tel:09922210002/9822750002" className="hover:text-yellow-400 transition-colors">
               09922210002 / 9822750002
             </a>
@@ -99,12 +120,13 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
       </div>
 
       {/* Bottom Copyright */}
       <div className="bg-gray-900 text-center py-4 text-gray-400 font-medium">
-        © {new Date().getFullYear()} Durga Khanawal. All Rights Reserved.
+        © {new Date().getFullYear()}{" "}
+        {language === "en" ? "Durga Khanawal" : language === "mr" ? "दुर्गा खानावळ" : "दुर्गा खानावल"}.{" "}
+        {language === "en" ? "All Rights Reserved." : language === "mr" ? "सर्व हक्क राखीव." : "सभी अधिकार सुरक्षित."}
       </div>
     </footer>
   );

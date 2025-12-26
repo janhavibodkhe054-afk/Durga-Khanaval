@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { LanguageContext } from "../context/LanguageContext"; // make sure this path is correct
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { language, changeLanguage } = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,14 +27,24 @@ const Navbar = () => {
      after:h-[2px] after:bg-[#C1440E]
      after:transition-all after:duration-300`;
 
+  // Links with multi-language names
   const links = [
-    { path: "/", name: "Home" },
-    { path: "/about", name: "About" },
-    { path: "/menu", name: "Menu" },
-    { path: "/booking", name: "Booking" },
-    { path: "/highlights", name: "Highlights" },
-    { path: "/contact", name: "Contact" },
+    { path: "/", name: { en: "Home", hi: "होम", mr: "मुख्य" } },
+    { path: "/about", name: { en: "About", hi: "हमारे बारे में", mr: "आमच्या विषयी" } },
+    { path: "/menu", name: { en: "Menu", hi: "मेनू", mr: "मेनू" } },
+    { path: "/booking", name: { en: "Booking", hi: "बुकिंग", mr: "बुकिंग" } },
+    { path: "/highlights", name: { en: "Highlights", hi: "हाइलाइट्स", mr: "हायलाइट्स" } },
+    { path: "/organic", name: { en: "OrganicFarm", hi: "ऑर्गेनिक फार्म", mr: "सेंद्रिय शेती" } },
+    { path: "/contact", name: { en: "Contact", hi: "संपर्क", mr: "संपर्क" } },
   ];
+
+  // Call button text based on language
+  const callText =
+    language === "en"
+      ? "Call Us"
+      : language === "hi"
+      ? "हमें कॉल करें"
+      : "आम्हाला कॉल करा";
 
   return (
     <nav
@@ -40,7 +52,6 @@ const Navbar = () => {
         ${scrolled ? "shadow-xl" : "shadow-md"}`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-8 py-4">
-
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-2">
           <img src="/durgalogo.png" alt="Durga Khanaval" className="h-10 md:h-11" />
@@ -51,20 +62,33 @@ const Navbar = () => {
           {links.map((link) => (
             <li key={link.path}>
               <NavLink to={link.path} end={link.path === "/"} className={navLinkClass}>
-                {link.name}
+                {link.name[language]}
               </NavLink>
             </li>
           ))}
         </ul>
 
-        {/* DESKTOP CALL BUTTON */}
-        <a
-          href="tel:09049525219"
-          className="hidden md:inline-block rounded-full px-6 py-2.5 text-sm font-semibold
+        <div className="hidden md:flex items-center gap-4">
+          {/* DESKTOP CALL BUTTON */}
+          <a
+            href="tel:09049525219"
+            className="rounded-full px-6 py-2.5 text-sm font-semibold
                      bg-[#C1440E] text-white hover:bg-black transition-all duration-300"
-        >
-          Call Us · 09049525219
-        </a>
+          >
+            {callText} · 09049525219
+          </a>
+
+          {/* LANGUAGE SELECTOR */}
+          <select
+            value={language}
+            onChange={(e) => changeLanguage(e.target.value)}
+            className="px-2 py-1 border rounded text-sm"
+          >
+            <option value="mr">Marathi</option>
+            <option value="hi">Hindi</option>
+            <option value="en">English</option>
+          </select>
+        </div>
 
         {/* MOBILE TOGGLE */}
         <button
@@ -79,13 +103,13 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       <div
         className={`md:hidden bg-white overflow-hidden transition-all duration-300
-        ${open ? "max-h-[500px] shadow-lg" : "max-h-0"}`}
+        ${open ? "max-h-[600px] shadow-lg" : "max-h-0"}`}
       >
         <ul className="flex flex-col px-6 py-4 gap-5 text-sm font-semibold uppercase">
           {links.map((link) => (
             <li key={link.path} onClick={() => setOpen(false)}>
               <NavLink to={link.path} end={link.path === "/"} className={navLinkClass}>
-                {link.name}
+                {link.name[language]}
               </NavLink>
             </li>
           ))}
@@ -96,8 +120,19 @@ const Navbar = () => {
             className="mt-3 inline-block text-center rounded-full py-3
                        bg-[#C1440E] text-white hover:bg-black transition-all duration-300"
           >
-            Call Us · 09049525219
+            {callText} · 09049525219
           </a>
+
+          {/* MOBILE LANGUAGE SELECTOR */}
+          <select
+            value={language}
+            onChange={(e) => changeLanguage(e.target.value)}
+            className="mt-3 px-2 py-1 border rounded text-sm"
+          >
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="mr">Marathi</option>
+          </select>
         </ul>
       </div>
     </nav>

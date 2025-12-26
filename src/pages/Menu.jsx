@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { LanguageContext } from "../context/LanguageContext";
 
 // HERO BACKGROUND
 import heroBg from "../assets/durgathali1.jpeg";
@@ -14,7 +15,17 @@ import thali4 from "../assets/Thali2.jpeg";
 import thali5 from "../assets/thali3.jpg";
 
 export default function Menu() {
+  const { language } = useContext(LanguageContext); // Language support
+
   const thaliImages = [thali1, thali2, thali3, thali4, thali5];
+  const thaliCaptions = [
+    { en: "Traditional Maharashtrian Thali", mr: "पारंपरिक महाराष्ट्रीयन थाळी", hi: "पारंपरिक महाराष्ट्रीयन थाली" },
+    { en: "Special ‘Draupadi Thali’", mr: "खास ‘द्रौपदी थाळी’", hi: "खास ‘द्रौपदी थाली’" },
+    { en: "Vegetarian Delight", mr: "शाकाहारी आनंद", hi: "शाकाहारी आनंद" },
+    { en: "Fresh Home-style Thali", mr: "ताजे घरगुती थाळी", hi: "ताजा घरगुती थाली" },
+    { en: "Chef’s Special Selection", mr: "संपूर्ण खास निवड", hi: "संपूर्ण खास चयन" },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
 
@@ -36,8 +47,6 @@ export default function Menu() {
       intervalRef.current = null;
     }
   };
-
-  
 
   return (
     <div className="menu-page bg-[#FFF8F1] overflow-x-hidden">
@@ -71,7 +80,7 @@ export default function Menu() {
             transition={{ duration: 0.9 }}
             className="text-xs sm:text-sm md:text-lg tracking-widest uppercase text-[#FFDAB3] mb-4"
           >
-            ९१ वर्षांची परंपरा
+            {language === "en" ? "91 Years of Tradition" : language === "mr" ? "९१ वर्षांची परंपरा" : "91 वर्षों की परंपरा"}
           </motion.p>
 
           <motion.h1
@@ -82,7 +91,7 @@ export default function Menu() {
           >
             <span className="block text-white">Durga खानावळ</span>
             <span className="block text-[#FFDAB3] mt-4 sm:mt-6 md:mt-8">
-              आमचे खास मेनू
+              {language === "en" ? "Our Special Menu" : language === "mr" ? "आमचे खास मेनू" : "हमारा खास मेनू"}
             </span>
           </motion.h1>
 
@@ -99,7 +108,7 @@ export default function Menu() {
             transition={{ delay: 1.4, duration: 0.8 }}
             className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#FFE9D4]"
           >
-            पारंपरिक • शुद्ध • घरगुती स्वाद
+            {language === "en" ? "Traditional • Pure • Homemade Flavors" : language === "mr" ? "पारंपरिक • शुद्ध • घरगुती स्वाद" : "पारंपरिक • शुद्ध • घर का बना स्वाद"}
           </motion.p>
         </div>
       </section>
@@ -115,32 +124,32 @@ export default function Menu() {
           className="space-y-8 sm:space-y-10"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#8B2E1F]">
-            ⭐ आमची खासियत — पारंपरिक महाराष्ट्रीयन थाळी
+            {language === "en" ? "⭐ Our Specialty — Traditional Maharashtrian Thali" : language === "mr" ? "⭐ आमची खासियत — पारंपरिक महाराष्ट्रीयन थाळी" : "⭐ हमारी खासियत — पारंपरिक महाराष्ट्रीयन थाली"}
           </h2>
 
           <div className="bg-[#FFF3E8] p-4 sm:p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
             <h3 className="text-xl sm:text-2xl font-semibold mb-3">
-              १. महाराष्ट्रीयन थाळी
+              {language === "en" ? "1. Maharashtrian Thali" : language === "mr" ? "१. महाराष्ट्रीयन थाळी" : "1. महाराष्ट्रीयन थाली"}
             </h3>
             <ul className="list-disc list-inside text-[#555] space-y-1 sm:space-y-2 text-sm sm:text-base">
-              <li>पोळी</li>
-              <li>भात</li>
-              <li>३ कोरड्या भाज्या</li>
-              <li>२ रस्सा / भाजी</li>
-              <li>मिर्ची, लिंबू</li>
-              <li>लोणचे, पापड, कोशिंबीर</li>
-              <li>ताक / दही / गोड पदार्थ</li>
+              <li>{language === "en" ? "Chapati" : language === "mr" ? "पोळी" : "चपाती"}</li>
+              <li>{language === "en" ? "Rice" : language === "mr" ? "भात" : "चावल"}</li>
+              <li>{language === "en" ? "3 Dry Vegetables" : language === "mr" ? "३ कोरड्या भाज्या" : "3 सूखी सब्ज़ियाँ"}</li>
+              <li>{language === "en" ? "2 Curries / Bhaji" : language === "mr" ? "२ रस्सा / भाजी" : "2 करी / भाजी"}</li>
+              <li>{language === "en" ? "Chili, Lemon" : language === "mr" ? "मिर्ची, लिंबू" : "मिर्च, नींबू"}</li>
+              <li>{language === "en" ? "Pickle, Papad, Salad" : language === "mr" ? "लोणचे, पापड, कोशिंबीर" : "अचार, पापड़, सलाद"}</li>
+              <li>{language === "en" ? "Curd / Sweet Dish" : language === "mr" ? "ताक / दही / गोड पदार्थ" : "दही / मिठाई"}</li>
             </ul>
           </div>
 
           <div className="bg-[#FFF3E8] p-4 sm:p-6 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-105 transition">
             <h3 className="text-xl sm:text-2xl font-semibold mb-3">
-              २. खास ‘द्रौपदी थाळी’
+              {language === "en" ? "2. Special ‘Draupadi Thali’" : language === "mr" ? "२. खास ‘द्रौपदी थाळी’" : "2. खास ‘द्रौपदी थाली’"}
             </h3>
             <ul className="list-disc list-inside text-[#555] space-y-1 sm:space-y-2 text-sm sm:text-base">
-              <li>५–७ विविध पदार्थ</li>
-              <li>अत्यंत लोकप्रिय</li>
-              <li>फक्त शाकाहारी</li>
+              <li>{language === "en" ? "5–7 Varieties of Dishes" : language === "mr" ? "५–७ विविध पदार्थ" : "5–7 तरह के व्यंजन"}</li>
+              <li>{language === "en" ? "Highly Popular" : language === "mr" ? "अत्यंत लोकप्रिय" : "बहुत लोकप्रिय"}</li>
+              <li>{language === "en" ? "Vegetarian Only" : language === "mr" ? "फक्त शाकाहारी" : "सिर्फ शाकाहारी"}</li>
             </ul>
           </div>
         </motion.div>
@@ -151,7 +160,7 @@ export default function Menu() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="flex justify-center mt-10 md:mt-0"
+          className="flex justify-center mt-10 md:mt-0 relative"
         >
           <div className="relative w-full max-w-md sm:max-w-lg md:max-w-full rounded-3xl overflow-hidden shadow-2xl hover:scale-105 transition">
             <motion.img
@@ -163,6 +172,9 @@ export default function Menu() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             />
+            <div className="absolute bottom-4 left-4 bg-[#8B2E1F]/80 text-[#FFDAB3] px-3 py-1 rounded-full font-semibold shadow-md text-sm md:text-base">
+              {thaliCaptions[currentIndex][language]}
+            </div>
           </div>
         </motion.div>
       </section>
@@ -176,16 +188,29 @@ export default function Menu() {
         className="max-w-3xl mx-auto text-center py-16 sm:py-20 space-y-4 sm:space-y-6 px-4 sm:px-6"
       >
         <p className="text-lg sm:text-xl md:text-2xl text-[#8B2E1F] font-medium">
-          आम्ही १९३४ पासून पारंपरिक, घरगुती आणि प्रेमाने बनवलेले जेवण देत आहोत.
+          {language === "en"
+            ? "Since 1934, we serve traditional, homemade meals made with love."
+            : language === "mr"
+            ? "आम्ही १९३४ पासून पारंपरिक, घरगुती आणि प्रेमाने बनवलेले जेवण देत आहोत."
+            : "1934 से हम पारंपरिक, घर का बना और प्यार से तैयार भोजन प्रदान कर रहे हैं।"}
         </p>
         <p className="text-lg sm:text-xl md:text-2xl text-[#8B2E1F] font-medium">
-          दररोज ताजे आणि शुद्ध ‘घरगुती जेवण’.
+          {language === "en"
+            ? "Fresh and pure ‘home-style meals’ every day."
+            : language === "mr"
+            ? "दररोज ताजे आणि शुद्ध ‘घरगुती जेवण’."
+            : "हर दिन ताजा और शुद्ध 'घर का बना भोजन'।"}
         </p>
         <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#A33A2A] animate-pulse">
-          आपण नक्की भेट द्या — आपले हार्दिक स्वागत आहे!
+          {language === "en"
+            ? "Do visit us — You are heartily welcome!"
+            : language === "mr"
+            ? "आपण नक्की भेट द्या — आपले हार्दिक स्वागत आहे!"
+            : "आपका स्वागत है — कृपया हमें अवश्य देखें!"}
         </h3>
       </motion.section>
+
+     
     </div>
   );
-
 }

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hotel1 from "../assets/Hotel1.jpeg";
+import { LanguageContext } from "../context/LanguageContext";
 
 export default function Booking() {
+  const { language } = useContext(LanguageContext);
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -19,169 +23,190 @@ export default function Booking() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert("Reservation request submitted! (Static only)");
+    alert(
+      language === "en"
+        ? "Reservation request submitted! (Static only)"
+        : language === "mr"
+        ? "आरक्षण विनंती सादर झाली! (केवळ स्थिर)"
+        : "आरक्षण अनुरोध जमा किया गया! (केवल स्थैतिक)"
+    );
   }
 
-  
-
-  
-
   return (
-    <>
-      {/* ================= BOOKING PAGE ================= */}
-      <section className="min-h-screen grid md:grid-cols-2 bg-[#FFF8F1] pt-28 pb-24 overflow-x-hidden">
+    <div className="bg-[#FFF6ED] overflow-x-hidden">
 
-        {/* ================= IMAGE PANEL ================= */}
-        {/* Mobile image first */}
-        <div className="relative md:hidden flex items-center justify-center mb-8">
-          <div
-            className="w-full h-64 sm:h-80 bg-cover bg-center rounded-3xl shadow-xl"
-            style={{
-              backgroundImage: `linear-gradient(
-                rgba(92,26,18,0.85),
-                rgba(92,26,18,0.85)
-              ), url(${Hotel1})`,
-            }}
+      {/* ================= HERO ================= */}
+      <section
+        className="relative min-h-[55vh] flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(64,18,12,0.85), rgba(64,18,12,0.85)), url(${Hotel1})`,
+        }}
+      >
+        <div className="text-center text-white px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-4xl md:text-6xl font-serif font-bold"
           >
-            <div className="flex flex-col items-center justify-center h-full text-center text-white px-6">
-              <h1 className="text-3xl sm:text-4xl font-serif font-bold mb-2">
-                Durga खानावळ
-              </h1>
-              <p className="text-sm sm:text-base text-[#FFDAB3] tracking-wide">
-                स्थापना १९३४ • ९०+ वर्षांचा वारसा
+            {language === "en"
+              ? "Durga Khanawal"
+              : language === "mr"
+              ? "दुर्गा खानावळ"
+              : "दुर्गा खानावल"}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 1 }}
+            className="mt-3 text-[#FFD6B0] tracking-wide"
+          >
+            {language === "en"
+              ? "Since 1934 • Authentic Maharashtrian Taste"
+              : language === "mr"
+              ? "१९३४ पासून • अस्सल महाराष्ट्रीयन चव"
+              : "1934 से • पारंपरिक महाराष्ट्रीय स्वाद"}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ================= BOOKING ================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="grid md:grid-cols-2 gap-12 items-center"
+        >
+
+          {/* LEFT INFO */}
+          <div className="space-y-6">
+            <h2 className="text-4xl font-serif font-bold text-[#8B2E1F]">
+              {language === "en"
+                ? "Reserve Your Table"
+                : language === "mr"
+                ? "आपले टेबल आरक्षित करा"
+                : "अपनी मेज़ आरक्षित करें"}
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed">
+              {language === "en"
+                ? "Enjoy a heritage dining experience passed down through generations. Reserve your seat and relish timeless flavors."
+                : language === "mr"
+                ? "पिढ्यानपिढ्या जपलेला अस्सल जेवणाचा अनुभव. आजच आपले टेबल आरक्षित करा."
+                : "पीढ़ियों से चली आ रही पारंपरिक भोजन परंपरा का आनंद लें।"}
+            </p>
+
+            <div className="bg- text-black ">
+              <p className="text-lg font-semibold">
+                {language === "en"
+                  ? "Call for Quick Booking"
+                  : language === "mr"
+                  ? "त्वरित बुकिंगसाठी कॉल करा"
+                  : "त्वरित बुकिंग के लिए कॉल करें"}
               </p>
+              <p className="mt-1 text-[#8B2E1F]">+91 98765 43210</p>
             </div>
           </div>
-        </div>
 
-        {/* Left image panel for desktop */}
-        <div
-          className="relative hidden md:flex items-center justify-center bg-cover bg-center"
-          style={{
-            backgroundImage: `linear-gradient(
-              rgba(92,26,18,0.85),
-              rgba(92,26,18,0.85)
-            ), url(${Hotel1})`,
-          }}
-        >
-          <div className="text-center text-white px-10">
-            <h1 className="text-5xl font-serif font-bold mb-4">
-              Durga खानावळ
-            </h1>
-            <p className="text-lg tracking-wide text-[#FFDAB3]">
-              स्थापना १९३४ • ९०+ वर्षांचा वारसा
-            </p>
-          </div>
-        </div>
+          {/* RIGHT FORM */}
+          <div className="backdrop-blur-xl bg-white/80 rounded-3xl shadow-2xl p-8 md:p-10">
+            <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* ================= RIGHT FORM PANEL ================= */}
-        <div className="flex items-center justify-center px-4 sm:px-6 md:px-10 py-12 sm:py-16">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10">
-            <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold text-[#8B2E1F] mb-2 text-center">
-              Reserve a Table
-            </h2>
-            <p className="text-center text-gray-500 mb-8 text-sm sm:text-base">
-              Book your traditional dining experience
-            </p>
+              <input
+                type="text"
+                name="name"
+                placeholder={language === "en" ? "Full Name" : language === "mr" ? "पूर्ण नाव" : "पूरा नाम"}
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
+              />
 
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-              <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder={language === "en" ? "Phone Number" : language === "mr" ? "फोन नंबर" : "फोन नंबर"}
+                value={form.phone}
+                onChange={handleChange}
+                required
+                className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
+              />
+
+              <div className="grid grid-cols-2 gap-4">
                 <input
-                  type="text"
-                  name="name"
-                  value={form.name}
+                  type="date"
+                  name="date"
+                  value={form.date}
                   onChange={handleChange}
                   required
-                  className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
+                  className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
                 />
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Phone Number
-                </label>
                 <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
+                  type="time"
+                  name="time"
+                  value={form.time}
                   onChange={handleChange}
                   required
-                  className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
+                  className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">Date</label>
-                  <input
-                    type="date"
-                    name="date"
-                    value={form.date}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
-                  />
-                </div>
+              <select
+                name="people"
+                value={form.people}
+                onChange={handleChange}
+                required
+                className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
+              >
+                <option value="">
+                  {language === "en"
+                    ? "Number of Guests"
+                    : language === "mr"
+                    ? "लोकसंख्या"
+                    : "मेहमानों की संख्या"}
+                </option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6+</option>
+              </select>
 
-                <div>
-                  <label className="block text-sm font-medium mb-1">Time</label>
-                  <input
-                    type="time"
-                    name="time"
-                    value={form.time}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  No. of People
-                </label>
-                <select
-                  name="people"
-                  value={form.people}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
-                >
-                  <option value="">Select</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6+</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Special Requests
-                </label>
-                <textarea
-                  name="notes"
-                  rows="3"
-                  placeholder="Birthday / Anniversary / Party"
-                  onChange={handleChange}
-                  className="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8B2E1F]"
-                />
-              </div>
+              <textarea
+                name="notes"
+                rows="3"
+                placeholder={
+                  language === "en"
+                    ? "Special Requests (Optional)"
+                    : language === "mr"
+                    ? "विशेष विनंत्या (ऐच्छिक)"
+                    : "विशेष अनुरोध (वैकल्पिक)"
+                }
+                onChange={handleChange}
+                className="w-full rounded-xl border px-4 py-3 focus:ring-2 focus:ring-[#8B2E1F] outline-none"
+              />
 
               <button
                 type="submit"
-                className="w-full bg-[#8B2E1F] hover:bg-[#6F2419] text-white py-3 rounded-xl font-semibold tracking-wide transition"
+                className="w-full bg-[#8B2E1F] hover:bg-[#6F2419] text-white py-3 rounded-xl font-semibold tracking-wide transition-transform hover:scale-105"
               >
-                Submit Reservation
+                {language === "en"
+                  ? "Confirm Reservation"
+                  : language === "mr"
+                  ? "आरक्षण निश्चित करा"
+                  : "आरक्षण की पुष्टि करें"}
               </button>
+
             </form>
           </div>
-        </div>
-
+        </motion.div>
       </section>
-    </>
+
+    </div>
   );
 }
