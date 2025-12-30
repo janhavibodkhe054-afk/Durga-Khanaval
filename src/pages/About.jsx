@@ -23,7 +23,7 @@ import gallery2 from "../assets/gallery2.jpeg";
 import gallery3 from "../assets/gallery3.jpeg";
 import gallery4 from "../assets/gallery4.jpeg";
 import gallery5 from "../assets/gallery5.jpeg";
-import gallery from "../assets/gallery.jpeg"; 
+import gallery from "../assets/gallery.jpeg";
 
 export default function About() {
   const { language } = useContext(LanguageContext); // Add language support
@@ -207,10 +207,17 @@ export default function About() {
           </h3>
           <p className="text-[#8B2E1F]/90 text-base md:text-lg">
             {language === "en"
-              ? "Mrs. Vimal Jadhav — Chief Director..."
+              ? "Mrs. Vimal Vasantrao Jadhav — Chief Director..."
               : language === "mr"
               ? "सौ. विमल वसंतराव जाधव — प्रमुख संचालिका..."
-              : "श्रीमती विमल जाधव — मुख्य संचालक..."}
+              : "श्रीमती विमल वसंतराव जाधव — मुख्य संचालक..."}
+          </p>
+          <p className="text-[#8B2E1F]/90 text-base md:text-lg">
+            {language === "en"
+              ? "Mrs. Durga Vikram Jadhav — Chief Director..."
+              : language === "mr"
+              ? "सौ. दुर्गा विक्रम जाधव — प्रमुख संचालिका..."
+              : "श्रीमती दुर्गा विक्रम जाधव — मुख्य संचालिका..."}
           </p>
         </div>
         <div className="history-right md:w-1/2 relative">
@@ -261,74 +268,73 @@ export default function About() {
 
       {/* ================= MEDIA SECTION ================= */}
       <section className="media-section max-w-7xl mx-auto my-24 px-4 md:px-0">
-  {/* Heading */}
-  <div className="text-center mb-14">
-    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8B2E1F] mb-4">
-      {language === "en"
-        ? "Press & Media Coverage"
-        : language === "mr"
-        ? "प्रेस व मीडिया कव्हरेज"
-        : "प्रेस और मीडिया कवरेज"}
-    </h2>
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8B2E1F] mb-4">
+            {language === "en"
+              ? "Press & Media Coverage"
+              : language === "mr"
+              ? "प्रेस व मीडिया कव्हरेज"
+              : "प्रेस और मीडिया कवरेज"}
+          </h2>
 
-    <div className="flex justify-center items-center gap-3 mb-4">
-      <span className="w-10 h-[2px] bg-[#8B2E1F]/40"></span>
-      <span className="text-[#C1440E] text-xl">✺</span>
-      <span className="w-10 h-[2px] bg-[#8B2E1F]/40"></span>
-    </div>
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <span className="w-10 h-[2px] bg-[#8B2E1F]/40"></span>
+            <span className="text-[#C1440E] text-xl">✺</span>
+            <span className="w-10 h-[2px] bg-[#8B2E1F]/40"></span>
+          </div>
 
-    <p className="text-[#8B2E1F]/70 text-base md:text-lg">
-      {language === "en"
-        ? "Featured in leading newspapers & media houses"
-        : language === "mr"
-        ? "प्रसिद्ध वृत्तपत्रे व माध्यमांमध्ये प्रसिद्ध"
-        : "प्रमुख समाचार पत्रों और मीडिया में प्रकाशित"}
-    </p>
-  </div>
+          <p className="text-[#8B2E1F]/70 text-base md:text-lg">
+            {language === "en"
+              ? "Featured in leading newspapers & media houses"
+              : language === "mr"
+              ? "प्रसिद्ध वृत्तपत्रे व माध्यमांमध्ये प्रसिद्ध"
+              : "प्रमुख समाचार पत्रों और मीडिया में प्रकाशित"}
+          </p>
+        </div>
 
-  {/* Media Grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    {[
-      newsPaper,
-      media1,
-      media2,
-      media3,
-      news2,
-      paper1,
-      paper2,
-      paper3,
-      paper4,
-    ].map((imgSrc, index) => (
-      <div
-        key={index}
-        className="group relative overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 hover:shadow-2xl"
-      >
-        <img
-          src={imgSrc}
-          alt={`Media ${index + 1}`}
-          className={`w-full transition-transform duration-700 group-hover:scale-110
+        {/* Media Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {[
+            newsPaper,
+            media1,
+            media2,
+            media3,
+            news2,
+            paper1,
+            paper2,
+            paper3,
+            paper4,
+          ].map((imgSrc, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 hover:shadow-2xl"
+            >
+              <img
+                src={imgSrc}
+                alt={`Media ${index + 1}`}
+                className={`w-full transition-transform duration-700 group-hover:scale-110
             ${
               index === 4 || index === 5
                 ? "h-auto object-contain p-4"
                 : "h-72 md:h-80 object-cover"
             }`}
-        />
+              />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end">
-          <p className="text-white text-sm md:text-base font-medium p-4">
-            {language === "en"
-              ? "Press Highlight"
-              : language === "mr"
-              ? "प्रेस हायलाइट"
-              : "प्रेस हाइलाइट"}
-          </p>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex items-end">
+                <p className="text-white text-sm md:text-base font-medium p-4">
+                  {language === "en"
+                    ? "Press Highlight"
+                    : language === "mr"
+                    ? "प्रेस हायलाइट"
+                    : "प्रेस हाइलाइट"}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
-</section>
-
+      </section>
 
       <section className="history-section max-w-6xl mx-auto my-20 px-4 md:px-0 animate-on-scroll">
         {/* ===== Heading & Text ===== */}

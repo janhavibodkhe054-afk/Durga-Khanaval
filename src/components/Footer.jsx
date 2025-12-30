@@ -52,19 +52,49 @@ export default function Footer() {
 
         {/* ADDRESS */}
         <div>
-          <h4 className="text-xl font-semibold text-white mb-4">
-            {language === "en" ? "Address" : language === "mr" ? "पत्ता" : "पता"}
-          </h4>
-          <a
-            href="https://maps.app.goo.gl/ZFd4bxnUrzT35Xc89"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-yellow-400 transition-colors"
-          >
-            Fata, Satara - Lonand Rd, Post Wathar,<br />
-            Wathar Station, Maharashtra 415524
-          </a>
-        </div>
+  <h4 className="text-xl font-semibold text-white mb-4">
+    {language === "en"
+      ? "Address"
+      : language === "mr"
+      ? "पत्ता"
+      : "पता"}
+  </h4>
+
+  <a
+    href="https://maps.app.goo.gl/ZFd4bxnUrzT35Xc89"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-yellow-400 transition-colors leading-relaxed"
+  >
+    {language === "en" && (
+      <>
+        Fata, Satara–Lonand Road,<br />
+        Post Wathar Station,<br />
+        Tal. Koregaon, Dist. Satara,<br />
+        Maharashtra – 415524
+      </>
+    )}
+
+    {language === "mr" && (
+      <>
+        मु. पो. वाठार स्टेशन,<br />
+        ता. कोरेगाव, जि. सातारा,<br />
+        सातारा – लोणंद रस्ता,<br />
+        पिनकोड : 415524
+      </>
+    )}
+
+    {language === "hi" && (
+      <>
+        मु. पो. वाठार स्टेशन,<br />
+        तह. कोरेगांव, जिला सातारा,<br />
+        सातारा – लोणंद रोड,<br />
+        पिन कोड : 415524
+      </>
+    )}
+  </a>
+</div>
+
 
         {/* CONTACT + SOCIAL */}
         <div>

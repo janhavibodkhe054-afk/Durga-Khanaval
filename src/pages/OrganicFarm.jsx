@@ -18,10 +18,10 @@ const OrganicFarm = () => {
         <div className="text-center px-6">
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4">
             {language === "en"
-              ? "Durga Khanaval Organic Farm"
+              ? "Durga Organic Farm"
               : language === "mr"
-              ? "दुर्गा खानावळ ऑर्गॅनिक फार्म"
-              : "दुर्गा खानावल ऑर्गेनिक फार्म"}
+              ? "दुर्गा ऑर्गेनिक फार्म"
+              : "दुर्गा ऑर्गेनिक फार्म"}
           </h1>
           <p className="text-lg md:text-xl text-[#FFD6CC] max-w-3xl mx-auto">
             {language === "en"
