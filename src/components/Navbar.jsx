@@ -71,11 +71,11 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-4">
           {/* DESKTOP CALL BUTTON */}
           <a
-            href="tel:09049525219"
+            href="tel: 09922210002"
             className="rounded-full px-6 py-2.5 text-sm font-semibold
                      bg-[#C1440E] text-white hover:bg-black transition-all duration-300"
           >
-            {callText} · 09049525219
+            {callText} ·  09922210002
           </a>
 
           {/* LANGUAGE SELECTOR */}
